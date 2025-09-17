@@ -2,3 +2,9 @@
 __pycache__/
 outputs/
 .env
+outputs/
+.env
+env/.env
+__pycache__/
+.venv/
+
