@@ -1,3 +1,4 @@
 git_sha,run_name,when,seed,epochs,cmd,metrics_path,notes
 uncommitted,cp_mini_debug_stub,2025-09-16 17:24,0,0,make train_cp && make eval_cp && make timing,outputs/cp_mini_debug/metrics.json,scaffold sanity
 d13eca4,cp_mini_debug_stub,2025-09-16 17:27,0,0,make train_cp && make eval_cp && make timing,outputs/cp_mini_debug/metrics.json,scaffold sanity
+56cf013,bev+demo_ok,2025-09-19 15:33,0,0,make bev && make demo,docs/artifacts/sanity_bev.png,BEV viz + demo gif
