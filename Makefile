@@ -14,26 +14,26 @@ shell:
 	docker run --rm --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) -it \
 		--gpus all \
 		-v $(PROJECT_DIR):/workspace -v /home/deepak/data/sets/nuscenes:/data/nuscenes \
-		--env-file env/.env \
+		--env-file env/.env -e MPLCONFIGDIR=/workspace/.mplcache \
 		$(DOCKER_IMAGE) bash
 
 sanity:
 	docker run --rm --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) \
 		--gpus all \
 		-v $(PROJECT_DIR):/workspace -v /home/deepak/data/sets/nuscenes:/data/nuscenes \
-		--env-file env/.env \
+		--env-file env/.env -e MPLCONFIGDIR=/workspace/.mplcache \
 		$(DOCKER_IMAGE) python3 scripts/sanity.py
 
 train_cp:
-	docker run --rm --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --gpus all -v $(PROJECT_DIR):/workspace -v /home/deepak/data/sets/nuscenes:/data/nuscenes --env-file env/.env $(DOCKER_IMAGE) \
+	docker run --rm --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --gpus all -v $(PROJECT_DIR):/workspace -v /home/deepak/data/sets/nuscenes:/data/nuscenes --env-file env/.env -e MPLCONFIGDIR=/workspace/.mplcache $(DOCKER_IMAGE) \
 		python3 scripts/train_centerpoint.py
 
 eval_cp:
-	docker run --rm --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --gpus all -v $(PROJECT_DIR):/workspace -v /home/deepak/data/sets/nuscenes:/data/nuscenes --env-file env/.env $(DOCKER_IMAGE) \
+	docker run --rm --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --gpus all -v $(PROJECT_DIR):/workspace -v /home/deepak/data/sets/nuscenes:/data/nuscenes --env-file env/.env -e MPLCONFIGDIR=/workspace/.mplcache $(DOCKER_IMAGE) \
 		python3 scripts/eval_centerpoint.py
 
 timing:
-	docker run --rm --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --gpus all -v $(PROJECT_DIR):/workspace -v /home/deepak/data/sets/nuscenes:/data/nuscenes --env-file env/.env $(DOCKER_IMAGE) \
+	docker run --rm --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --gpus all -v $(PROJECT_DIR):/workspace -v /home/deepak/data/sets/nuscenes:/data/nuscenes --env-file env/.env -e MPLCONFIGDIR=/workspace/.mplcache $(DOCKER_IMAGE) \
 		python3 scripts/timing.py
 
 demo:
@@ -41,8 +41,8 @@ demo:
 bev:
 	docker run --rm --user $(shell id -u):$(shell id -g) --gpus all \
 		-v $(PROJECT_DIR):/workspace -v /home/deepak/data/sets/nuscenes:/data/nuscenes \
-		--env-file env/.env \
+		--env-file env/.env -e MPLCONFIGDIR=/workspace/.mplcache \
 		$(DOCKER_IMAGE) python3 scripts/bev_preview.py
-	docker run --rm --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --gpus all -v $(PROJECT_DIR):/workspace -v /home/deepak/data/sets/nuscenes:/data/nuscenes --env-file env/.env $(DOCKER_IMAGE) \
+	docker run --rm --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --user $(shell id -u):$(shell id -g) --gpus all -v $(PROJECT_DIR):/workspace -v /home/deepak/data/sets/nuscenes:/data/nuscenes --env-file env/.env -e MPLCONFIGDIR=/workspace/.mplcache $(DOCKER_IMAGE) \
 		python3 scripts/demo.py
 
