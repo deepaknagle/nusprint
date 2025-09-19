@@ -8,3 +8,14 @@ env/.env
 __pycache__/
 .venv/
 
+# never commit datasets or heavy artifacts
+samples/
+sweeps/
+maps/
+v1.0-mini/
+data/
+outputs/
+env/.env
+*.lock
+*.mp4
+*.gif
